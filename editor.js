@@ -143,7 +143,7 @@ function main() {
 
             localStorage.setItem('cad_projects', JSON.stringify(existingProjects));
             alert(`Project "${projectData.name}" saved!`);
-            window.location.href = '/'; // Redirect to home
+            window.location.href = 'index.html'; // Redirect to home
 
         } catch (e) {
             console.error("Failed to save project to localStorage", e);
