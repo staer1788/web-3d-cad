@@ -43,14 +43,32 @@
             color: white;
             border-color: #36a420;
         }
+        .separator {
+            width: 1px;
+            background-color: #ccc;
+            margin: 0 0.5rem;
+        }
+        .mode-btn {
+            background-color: #f0f2f5;
+            color: #4b4f56;
+        }
+        .mode-btn.active {
+            background-color: #e0e0e0;
+            border-color: #a0a0a0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div id="editor-container">
         <div class="editor-ui">
             <a href="/" id="back-to-home">Back to Home</a>
-            <button id="save-btn">Save Project</button>
-            <button id="export-btn">Export as JSON</button>
+            <button id="save-btn">Save</button>
+            <button id="export-btn">Export</button>
+            <span class="separator"></span>
+            <button id="translate-btn" class="mode-btn active">Move</button>
+            <button id="rotate-btn" class="mode-btn">Rotate</button>
+            <button id="scale-btn" class="mode-btn">Scale</button>
         </div>
         <canvas id="c"></canvas>
     </div>
@@ -60,7 +78,8 @@
     {
         "imports": {
             "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js",
-            "three/examples/jsm/controls/OrbitControls.js": "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/OrbitControls.js"
+            "three/examples/jsm/controls/OrbitControls.js": "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/OrbitControls.js",
+            "three/examples/jsm/controls/TransformControls.js": "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/TransformControls.js"
         }
     }
     </script>

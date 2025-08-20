@@ -1,8 +1,10 @@
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js';
 
 function main() {
     let cube; // Make cube accessible in the main function scope
+    let transformControls;
     const canvas = document.querySelector('#c');
     const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -14,11 +16,17 @@ function main() {
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.set(5, 5, 5);
 
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.target.set(0, 0, 0);
-    controls.update();
+    const orbitControls = new OrbitControls(camera, renderer.domElement);
+    orbitControls.target.set(0, 0, 0);
+    orbitControls.update();
+
+    transformControls = new TransformControls(camera, renderer.domElement);
+    transformControls.addEventListener('dragging-changed', function (event) {
+        orbitControls.enabled = !event.value;
+    });
 
     const scene = new THREE.Scene();
+    scene.add(transformControls);
     scene.background = new THREE.Color('lightgrey');
 
     // Add lighting
@@ -61,6 +69,7 @@ function main() {
         }
 
         scene.add(cube);
+        transformControls.attach(cube);
     }
 
     function resizeRendererToDisplaySize(renderer) {
@@ -78,7 +87,7 @@ function main() {
 
     function animate() {
         resizeRendererToDisplaySize(renderer);
-        controls.update(); // only required if controls.enableDamping or controls.autoRotate are set to true
+        orbitControls.update(); // only required if controls.enableDamping or controls.autoRotate are set to true
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
     }
@@ -179,6 +188,28 @@ function main() {
             window.URL.revokeObjectURL(url);
         }, 0);
     }
+
+    // --- Mode Switching ---
+    const modeButtons = document.querySelectorAll('.mode-btn');
+    modeButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Remove active class from all buttons
+            modeButtons.forEach(b => b.classList.remove('active'));
+            // Add active class to the clicked button
+            e.currentTarget.classList.add('active');
+        });
+    });
+
+    document.getElementById('translate-btn').addEventListener('click', () => {
+        transformControls.setMode('translate');
+    });
+    document.getElementById('rotate-btn').addEventListener('click', () => {
+        transformControls.setMode('rotate');
+    });
+    document.getElementById('scale-btn').addEventListener('click', () => {
+        transformControls.setMode('scale');
+    });
+
 
     // --- Initialization ---
     let currentProjectId = null;
