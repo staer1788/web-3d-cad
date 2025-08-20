@@ -1,0 +1,22 @@
+{
+  "en": {
+    "app_title": "3D CAD",
+    "new_project": "New Project",
+    "load_from_file": "Load from File",
+    "project_gallery": "Project Gallery",
+    "settings": "Settings",
+    "lang_select_title": "Select Language",
+    "lang_en": "English",
+    "lang_ja": "日本語"
+  },
+  "ja": {
+    "app_title": "3D CAD",
+    "new_project": "新規作成",
+    "load_from_file": "ファイルから読み込み",
+    "project_gallery": "作品一覧",
+    "settings": "設定",
+    "lang_select_title": "言語を選択してください",
+    "lang_en": "English",
+    "lang_ja": "日本語"
+  }
+}

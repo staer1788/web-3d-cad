@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #editor-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        .editor-ui {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 10;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .editor-ui a, .editor-ui button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+        #save-btn {
+            background-color: #1877f2;
+            color: white;
+            border-color: #1877f2;
+        }
+        #export-btn {
+            background-color: #36a420; /* Green */
+            color: white;
+            border-color: #36a420;
+        }
+    </style>
+</head>
+<body>
+    <div id="editor-container">
+        <div class="editor-ui">
+            <a href="/" id="back-to-home">Back to Home</a>
+            <button id="save-btn">Save Project</button>
+            <button id="export-btn">Export as JSON</button>
+        </div>
+        <canvas id="c"></canvas>
+    </div>
+
+    <!-- Import Map for Three.js modules -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js",
+            "three/examples/jsm/controls/OrbitControls.js": "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/OrbitControls.js"
+        }
+    }
+    </script>
+
+    <!-- Main script -->
+    <script type="module" src="editor.js"></script>
+</body>
+</html>

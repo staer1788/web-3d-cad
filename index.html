@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="app_title">3D CAD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Language Selection Modal -->
+    <div id="language-modal-overlay" class="hidden">
+        <div id="language-modal">
+            <h2 data-i18n="lang_select_title">Select Language</h2>
+            <button id="lang-en" data-lang="en" data-i18n="lang_en">English</button>
+            <button id="lang-ja" data-lang="ja" data-i18n="lang_ja">日本語</button>
+        </div>
+    </div>
+
+    <div id="app">
+        <header>
+            <h1 data-i18n="app_title">3D CAD</h1>
+        </header>
+        <main>
+            <div class="main-actions">
+                <button id="new-project-btn" data-i18n="new_project">New Project</button>
+                <button id="load-file-btn" data-i18n="load_from_file">Load from File</button>
+                <button id="settings-btn" data-i18n="settings">Settings</button>
+            </div>
+            <div class="project-gallery">
+                <h2 data-i18n="project_gallery">Project Gallery</h2>
+                <div id="project-list">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="main.js"></script>
+
+    <input type="file" id="file-importer" class="hidden" accept="application/json">
+</body>
+</html>
