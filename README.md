@@ -1,5 +1,7 @@
 # Web 3D CAD
 
+**Live Demo:** [https://staer1788.github.io/web-3d-cad/](https://staer1788.github.io/web-3d-cad/)
+
 A simple, browser-based 3D CAD application that runs entirely on the client-side. This application is designed to be hosted on static web platforms like GitHub Pages.
 
 ---
